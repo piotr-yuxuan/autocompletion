@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>core.clj</title>
+<meta name="generator" content="emacs 24.5.1; htmlfontify 0.21" />
+<style type="text/css"><!--
+body { font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ededed;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.default   { font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ededed;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.default a { font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ededed;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.variable-name   { color: #d8fa3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.variable-name a { color: #d8fa3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-6-face   { color: #add8e6;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-6-face a { color: #add8e6;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-5-face   { color: #00ff00;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-5-face a { color: #00ff00;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.function-name   { color: #ff1493;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.function-name a { color: #ff1493;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-4-face   { color: #ffff00;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-4-face a { color: #ffff00;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.clojure-character-face   { color: #61ce3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.clojure-character-face a { color: #61ce3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.string   { color: #61ce3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.string a { color: #61ce3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-3-face   { color: #ff1493;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-3-face a { color: #ff1493;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.clojure-keyword-face   { color: #4c83ff;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.clojure-keyword-face a { color: #4c83ff;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-2-face   { color: #006400;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-2-face a { color: #006400;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.doc   { font-style: italic;  color: #ffffff;  background: #1a1a1a;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-size: 11pt;  text-decoration: none; }
+span.doc a { font-style: italic;  color: #ffffff;  background: #1a1a1a;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-size: 11pt;  text-decoration: underline; }
+span.type   { color: #d8fa3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.type a { color: #d8fa3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.keyword   { color: #fbde2d;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.keyword a { color: #fbde2d;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-1-face   { color: #8b0000;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-1-face a { color: #8b0000;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+ --></style>
+
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
+      }
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use the them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
+      }
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+--> </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+
+<pre><span class="rainbow-delimiters-depth-1-face">(</span><span class="keyword">ns</span> <span class="type">autocomplete.core</span>
+  <span class="doc">&quot;This remote coding interview states:
+
+You are given a list of keywords below. Write code that will offer up to
+  4 suggested “auto­complete” based on the letters typed (not case
+  sensitive). Similar to Google Autocomplete, except that results must
+  be in order vs. Google ranked keywords.
+
+These few lines of codes are a proposal. They features two ways of
+  achieving autocompletion: one first constructs a graph (called
+  substrate) then queries it. The second one is dichotomy and sorting to
+  achieve faster and more scalable results. The remaining lines of this
+  file will elaborate on the algorithms and data structures used by both
+  ways.&quot;</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="clojure-keyword-face">:use</span> <span class="rainbow-delimiters-depth-3-face">[</span><span class="type">clojure.test</span><span class="rainbow-delimiters-depth-3-face">]</span>
+        <span class="rainbow-delimiters-depth-3-face">[</span>autocomplete tooling
+                      configuration
+                      projectors<span class="rainbow-delimiters-depth-3-face">]</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span>comment
+  <span class="string">&quot;Here is a simple substrate built with two words: paypal and
+  paywall. Paypay has identifer :id 0 and paywal is 1.&quot;</span>
+  <span class="rainbow-delimiters-depth-2-face">{</span><span class="clojure-character-face">\p</span> '<span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 0, <span class="clojure-keyword-face">:index</span> 0, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-4-face">}</span>
+        <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 0, <span class="clojure-keyword-face">:index</span> 3, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\y</span>, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-4-face">}</span>
+        <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 1, <span class="clojure-keyword-face">:index</span> 0, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-4-face">}</span><span class="rainbow-delimiters-depth-3-face">)</span>
+   <span class="clojure-character-face">\a</span> '<span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 0, <span class="clojure-keyword-face">:index</span> 1, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\p</span>, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\y</span><span class="rainbow-delimiters-depth-4-face">}</span>
+        <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 0, <span class="clojure-keyword-face">:index</span> 4, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\p</span>, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\l</span><span class="rainbow-delimiters-depth-4-face">}</span>
+        <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 1, <span class="clojure-keyword-face">:index</span> 1, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\p</span>, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\y</span><span class="rainbow-delimiters-depth-4-face">}</span>
+        <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 1, <span class="clojure-keyword-face">:index</span> 4, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\w</span>, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\l</span><span class="rainbow-delimiters-depth-4-face">}</span><span class="rainbow-delimiters-depth-3-face">)</span>
+   <span class="clojure-character-face">\y</span> '<span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 0, <span class="clojure-keyword-face">:index</span> 2, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\a</span>, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\p</span><span class="rainbow-delimiters-depth-4-face">}</span>
+        <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 1, <span class="clojure-keyword-face">:index</span> 2, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\a</span>, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\w</span><span class="rainbow-delimiters-depth-4-face">}</span><span class="rainbow-delimiters-depth-3-face">)</span>
+   <span class="clojure-character-face">\l</span> '<span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 0, <span class="clojure-keyword-face">:index</span> 5, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-4-face">}</span>
+        <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 1, <span class="clojure-keyword-face">:index</span> 5, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\a</span>, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\l</span><span class="rainbow-delimiters-depth-4-face">}</span>
+        <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 1, <span class="clojure-keyword-face">:index</span> 6, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\l</span><span class="rainbow-delimiters-depth-4-face">}</span><span class="rainbow-delimiters-depth-3-face">)</span>
+   <span class="clojure-character-face">\w</span> '<span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:id</span> 1, <span class="clojure-keyword-face">:index</span> 3, <span class="clojure-keyword-face">:previous</span> <span class="clojure-character-face">\y</span>, <span class="clojure-keyword-face">:next</span> <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-4-face">}</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">}</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span><span class="keyword">defn</span> <span class="function-name">autocomplete-graph</span>
+  <span class="doc">&quot;The autocompletion function with a graph. This is not
+  scalable. Moreover, you can't do that much with the tooling but I
+  found that way nice to be coded because it deals with a graph and
+  double-linked lists.
+
+The basic idea is to construct a graph whose vertices are letters. The
+  edges of this graph are made with double-linked lists standing for
+  each words in the list. Elements of these double-linked lists are
+  called tuples. Tuples are stored besides a node. Once this graph is
+  built (with function contruct) it's called 'substrate'. The technical
+  implementation has no redundancy. However, it is far from being
+  minimal: I could have used Huffman tree for this.
+
+The algorithm is thus pretty straightforward: for the first letter to be
+  matched we just retrieve all tuples beneath the corresponding
+  node (and they're filtered out to keep each word once or none). Then
+  we iterate over following letters of the sequence to be matched and
+  filter out non-conform tuples. The output is finally sorted and
+  printed out.&quot;</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="rainbow-delimiters-depth-3-face">[</span>substrate letters<span class="rainbow-delimiters-depth-3-face">]</span>
+   <span class="rainbow-delimiters-depth-3-face">(</span>autocomplete-graph substrate
+                       autocomplete-default-settings
+                       letters<span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="rainbow-delimiters-depth-3-face">[</span>substrate settings letters<span class="rainbow-delimiters-depth-3-face">]</span>
+   <span class="rainbow-delimiters-depth-3-face">(</span><span class="keyword">let</span> <span class="rainbow-delimiters-depth-4-face">[</span><span class="rainbow-delimiters-depth-5-face">[</span>sortf position case-mode limit<span class="rainbow-delimiters-depth-5-face">]</span>
+         <span class="rainbow-delimiters-depth-5-face">(</span>map #<span class="rainbow-delimiters-depth-6-face">(</span>set-or-default <span class="variable-name">%</span>
+                               settings
+                               autocomplete-default-settings<span class="rainbow-delimiters-depth-6-face">)</span>
+              <span class="rainbow-delimiters-depth-6-face">[</span><span class="clojure-keyword-face">:sort</span> <span class="clojure-keyword-face">:position</span> <span class="clojure-keyword-face">:case</span> <span class="clojure-keyword-face">:limit</span><span class="rainbow-delimiters-depth-6-face">]</span><span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">]</span>
+     <span class="rainbow-delimiters-depth-4-face">(</span><span class="keyword">-&gt;&gt;</span> <span class="rainbow-delimiters-depth-5-face">[</span>substrate position letters limit case-mode<span class="rainbow-delimiters-depth-5-face">]</span>
+          <span class="rainbow-delimiters-depth-5-face">(</span>apply words-with-sequence<span class="rainbow-delimiters-depth-5-face">)</span>
+          <span class="rainbow-delimiters-depth-5-face">(</span>map <span class="rainbow-delimiters-depth-6-face">(</span>partial full-word substrate<span class="rainbow-delimiters-depth-6-face">)</span><span class="rainbow-delimiters-depth-5-face">)</span>
+          <span class="rainbow-delimiters-depth-5-face">(</span>sort sortf<span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span><span class="keyword">defn</span> <span class="function-name">autocomplete-dicho</span>
+  <span class="doc">&quot;The autocompletion function with dichotomy. This doesn't use a graph
+  but a runs on a dichotomy-based interval search. It's highly more
+  scalabe than the graph-based solution and the tooling is rather
+  general, hence powerful.
+
+Once more, the algorithm is not very far-fetched: first the word list is
+  sorted (by dichotomy) according to some criterion. Then we find bounds
+  of the sublist of all words which match the criterion (with a
+  dichotomy-based threshold finding algorithm). We may iterate depending
+  of what we want and once it's done the result is returned.
+
+Whenever it's possible we try to take advantage of the tooling to avoid
+  unnecesarry computations. For example, when we have to look for words
+  containing some letters, we reduce data load by searching the rarest
+  letters first.
+
+One key concept throughout the code is `projector`. It's a function
+  which returns a function. This letter one is used against a word to
+  project it, that's to say to figure out it satisfy a criterion. For
+  example, if the criterion is 'words of 5 letters' the list will sorted
+  out such as shorter words are at the beginning then 5-letter words
+  then longer words. Same tool is used inside the threshold-finding
+  algorithm which is basically a dichotomy.&quot;</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="rainbow-delimiters-depth-3-face">[</span>words letters<span class="rainbow-delimiters-depth-3-face">]</span>
+   <span class="rainbow-delimiters-depth-3-face">(</span>autocomplete-dicho words
+                       autocomplete-default-settings
+                       letters<span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="rainbow-delimiters-depth-3-face">[</span>words settings letters<span class="rainbow-delimiters-depth-3-face">]</span>
+   <span class="rainbow-delimiters-depth-3-face">(</span><span class="keyword">let</span> <span class="rainbow-delimiters-depth-4-face">[</span><span class="rainbow-delimiters-depth-5-face">[</span>sortf position laxity case-mode limit<span class="rainbow-delimiters-depth-5-face">]</span>
+         <span class="rainbow-delimiters-depth-5-face">(</span>map #<span class="rainbow-delimiters-depth-6-face">(</span>set-or-default <span class="variable-name">%</span>
+                               settings
+                               autocomplete-default-settings<span class="rainbow-delimiters-depth-6-face">)</span>
+              <span class="rainbow-delimiters-depth-6-face">[</span><span class="clojure-keyword-face">:sort</span> <span class="clojure-keyword-face">:position</span> <span class="clojure-keyword-face">:laxity</span> <span class="clojure-keyword-face">:case</span> <span class="clojure-keyword-face">:limit</span><span class="rainbow-delimiters-depth-6-face">]</span><span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">]</span>
+     <span class="rainbow-delimiters-depth-4-face">(</span><span class="keyword">-&gt;&gt;</span> <span class="rainbow-delimiters-depth-5-face">[</span>words position letters laxity case-mode<span class="rainbow-delimiters-depth-5-face">]</span>
+          <span class="rainbow-delimiters-depth-5-face">(</span>apply words-contain-sequence-at-dicho<span class="rainbow-delimiters-depth-5-face">)</span>
+          <span class="rainbow-delimiters-depth-5-face">(</span>take limit<span class="rainbow-delimiters-depth-5-face">)</span>
+          <span class="rainbow-delimiters-depth-5-face">(</span>sort sortf<span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span><span class="keyword">let</span> <span class="rainbow-delimiters-depth-2-face">[</span>substrate <span class="rainbow-delimiters-depth-3-face">(</span>construct list-of-words<span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">]</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>println <span class="string">&quot;\nLet's compare the two approaches&quot;</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>print <span class="string">&quot;graph: &quot;</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>time <span class="rainbow-delimiters-depth-3-face">(</span>autocomplete-graph substrate <span class="string">&quot;Pro&quot;</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>print <span class="string">&quot;dicho: &quot;</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>time <span class="rainbow-delimiters-depth-3-face">(</span>autocomplete-dicho list-of-words <span class="string">&quot;Pro&quot;</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>str-print <span class="string">&quot;I do perform better at LISt-Processing than at&quot;</span>
+             <span class="string">&quot;graph-processing :-).\n&quot;</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span>comment
+  <span class="rainbow-delimiters-depth-2-face">(</span>time <span class="rainbow-delimiters-depth-3-face">(</span>autocomplete-dicho long-list-of-words <span class="string">&quot;pro&quot;</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>time <span class="rainbow-delimiters-depth-3-face">(</span>autocomplete-dicho long-list-of-words
+                            <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:position</span> identity
+                             <span class="clojure-keyword-face">:limit</span> 20
+                             <span class="clojure-keyword-face">:laxity</span> <span class="clojure-keyword-face">:terse</span>
+                             <span class="clojure-keyword-face">:sort</span> <span class="rainbow-delimiters-depth-5-face">(</span>lexicographic<span class="rainbow-delimiters-depth-5-face">)</span>
+                             <span class="clojure-keyword-face">:case</span> <span class="clojure-keyword-face">:relax</span><span class="rainbow-delimiters-depth-4-face">}</span>
+                            <span class="string">&quot;pro&quot;</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>time <span class="rainbow-delimiters-depth-3-face">(</span>autocomplete-dicho long-list-of-words
+                            <span class="rainbow-delimiters-depth-4-face">{</span><span class="clojure-keyword-face">:position</span> 0
+                             <span class="clojure-keyword-face">:limit</span> 20
+                             <span class="clojure-keyword-face">:laxity</span> <span class="clojure-keyword-face">:lax</span>
+                             <span class="clojure-keyword-face">:sort</span> <span class="rainbow-delimiters-depth-5-face">(</span>lexicographic<span class="rainbow-delimiters-depth-5-face">)</span>
+                             <span class="clojure-keyword-face">:case</span> <span class="clojure-keyword-face">:relax</span><span class="rainbow-delimiters-depth-4-face">}</span>
+                            <span class="string">&quot;hire&quot;</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span><span class="keyword">def</span> <span class="variable-name">most-anagrams</span>
+  <span class="doc">&quot;Said to be the word with most anagrams, let's find them.&quot;</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="keyword">-&gt;&gt;</span> <span class="string">&quot;spare&quot;</span>
+       <span class="rainbow-delimiters-depth-3-face">(</span>words-anagrams-of-dicho long-list-of-words<span class="rainbow-delimiters-depth-3-face">)</span>
+       time<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span><span class="keyword">def</span> <span class="variable-name">longuest-english-word</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="keyword">-&gt;&gt;</span> long-list-of-words
+       <span class="rainbow-delimiters-depth-3-face">(</span>sort #<span class="rainbow-delimiters-depth-4-face">(</span>vals-comparator <span class="rainbow-delimiters-depth-5-face">(</span>count <span class="variable-name">%</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="rainbow-delimiters-depth-5-face">(</span>count <span class="variable-name">%2</span><span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span>
+       last
+       time<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span>run-tests '<span class="type">autocomplete.tooling</span>
+           '<span class="type">autocomplete.configuration</span>
+           '<span class="type">autocomplete.projectors</span><span class="rainbow-delimiters-depth-1-face">)</span>
+</pre>
+
+ </body>
+</html>

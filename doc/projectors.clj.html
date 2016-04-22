@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>projectors.clj</title>
+<meta name="generator" content="emacs 24.5.1; htmlfontify 0.21" />
+<style type="text/css"><!--
+body { font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ededed;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.default   { font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ededed;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.default a { font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ededed;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-9-face   { color: #d3d3d3;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-9-face a { color: #d3d3d3;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-8-face   { color: #6a5acd;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-8-face a { color: #6a5acd;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.variable-name   { color: #d8fa3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.variable-name a { color: #d8fa3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.string   { color: #61ce3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.string a { color: #61ce3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.clojure-character-face   { color: #61ce3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.clojure-character-face a { color: #61ce3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-7-face   { color: #ffa500;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-7-face a { color: #ffa500;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-6-face   { color: #add8e6;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-6-face a { color: #add8e6;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-5-face   { color: #00ff00;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-5-face a { color: #00ff00;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-4-face   { color: #ffff00;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-4-face a { color: #ffff00;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.function-name   { color: #ff1493;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.function-name a { color: #ff1493;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-3-face   { color: #ff1493;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-3-face a { color: #ff1493;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.clojure-keyword-face   { color: #4c83ff;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.clojure-keyword-face a { color: #4c83ff;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-2-face   { color: #006400;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-2-face a { color: #006400;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.doc   { font-style: italic;  color: #ffffff;  background: #1a1a1a;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-size: 11pt;  text-decoration: none; }
+span.doc a { font-style: italic;  color: #ffffff;  background: #1a1a1a;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-size: 11pt;  text-decoration: underline; }
+span.type   { color: #d8fa3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.type a { color: #d8fa3c;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.keyword   { color: #fbde2d;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.keyword a { color: #fbde2d;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+span.rainbow-delimiters-depth-1-face   { color: #8b0000;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: none; }
+span.rainbow-delimiters-depth-1-face a { color: #8b0000;  font-family: DejaVu Sans Mono;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #000000;  font-size: 11pt;  text-decoration: underline; }
+ --></style>
+
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
+      }
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use the them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
+      }
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+--> </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+
+<pre><span class="rainbow-delimiters-depth-1-face">(</span><span class="keyword">ns</span> <span class="type">autocomplete.projectors</span>
+  <span class="doc">&quot;Projector express a criterion. They are functions on a word and
+  project it, that's to say return usually 0, 1, -1 or nil with a
+  specific semantic. They are inspired by Java comparator and thus can
+  be used for search or sort.&quot;</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="clojure-keyword-face">:use</span> <span class="type">clojure.test</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="clojure-keyword-face">:use</span> <span class="rainbow-delimiters-depth-3-face">[</span><span class="type">autocomplete.configuration</span><span class="rainbow-delimiters-depth-3-face">]</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span>with-test
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="keyword">defn</span> <span class="function-name">letter-in-word</span>
+    <span class="doc">&quot;Return [0 1] to express whether the word given as parameter
+  contains the letter the projector has been contructed with.&quot;</span>
+    <span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">[</span>letter<span class="rainbow-delimiters-depth-4-face">]</span>
+     <span class="rainbow-delimiters-depth-4-face">(</span>letter-in-word letter <span class="rainbow-delimiters-depth-5-face">(</span><span class="clojure-keyword-face">:case</span> autocomplete-default-settings<span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span>
+    <span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">[</span>letter case-mode<span class="rainbow-delimiters-depth-4-face">]</span>
+     <span class="rainbow-delimiters-depth-4-face">(</span><span class="keyword">fn</span> <span class="rainbow-delimiters-depth-5-face">[</span>current-letter<span class="rainbow-delimiters-depth-5-face">]</span> <span class="rainbow-delimiters-depth-5-face">(</span><span class="keyword">if</span> <span class="rainbow-delimiters-depth-6-face">(</span>some <span class="rainbow-delimiters-depth-7-face">(</span>case-match letter case-mode<span class="rainbow-delimiters-depth-7-face">)</span>
+                                   current-letter<span class="rainbow-delimiters-depth-6-face">)</span>
+                           0 1<span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 0 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>letter-in-word <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;a&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>letter-in-word <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;b&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 0 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>letter-in-word <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;ba&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>letter-in-word <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;bc&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span>with-test
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="keyword">defn</span> <span class="function-name">lexicographic</span>
+    <span class="doc">&quot;Return [-1 0 1] to express whether the former word is
+  lexicographicaly before, equal or after the latter word.&quot;</span>
+    <span class="rainbow-delimiters-depth-3-face">[</span><span class="rainbow-delimiters-depth-3-face">]</span>
+    #<span class="rainbow-delimiters-depth-3-face">(</span><span class="keyword">cond</span> <span class="rainbow-delimiters-depth-4-face">(</span><span class="keyword">and</span> <span class="rainbow-delimiters-depth-5-face">(</span>empty? <span class="variable-name">%1</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="rainbow-delimiters-depth-5-face">(</span>empty? <span class="variable-name">%2</span><span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span> 0
+           <span class="rainbow-delimiters-depth-4-face">(</span>empty? <span class="variable-name">%1</span><span class="rainbow-delimiters-depth-4-face">)</span> -1
+           <span class="rainbow-delimiters-depth-4-face">(</span>empty? <span class="variable-name">%2</span><span class="rainbow-delimiters-depth-4-face">)</span> 1
+           <span class="clojure-keyword-face">:else</span> <span class="rainbow-delimiters-depth-4-face">(</span><span class="keyword">case</span> <span class="rainbow-delimiters-depth-5-face">(</span>vals-comparator <span class="rainbow-delimiters-depth-6-face">(</span>int <span class="rainbow-delimiters-depth-7-face">(</span>first <span class="variable-name">%1</span><span class="rainbow-delimiters-depth-7-face">)</span><span class="rainbow-delimiters-depth-6-face">)</span>
+                                        <span class="rainbow-delimiters-depth-6-face">(</span>int <span class="rainbow-delimiters-depth-7-face">(</span>first <span class="variable-name">%2</span><span class="rainbow-delimiters-depth-7-face">)</span><span class="rainbow-delimiters-depth-6-face">)</span><span class="rainbow-delimiters-depth-5-face">)</span>
+                   0 <span class="rainbow-delimiters-depth-5-face">(</span><span class="keyword">recur</span> <span class="rainbow-delimiters-depth-6-face">(</span>rest <span class="variable-name">%1</span><span class="rainbow-delimiters-depth-6-face">)</span> <span class="rainbow-delimiters-depth-6-face">(</span>rest <span class="variable-name">%2</span><span class="rainbow-delimiters-depth-6-face">)</span><span class="rainbow-delimiters-depth-5-face">)</span>
+                   -1 -1
+                   1 1<span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 0 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>lexicographic<span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;abc&quot;</span> <span class="string">&quot;abc&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= -1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>lexicographic<span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;abc&quot;</span> <span class="string">&quot;abd&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= -1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>lexicographic<span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;ab&quot;</span> <span class="string">&quot;abc&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>lexicographic<span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;abc&quot;</span> <span class="string">&quot;ab&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>lexicographic<span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;abcd&quot;</span> <span class="string">&quot;abc&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span>with-test
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="keyword">defn</span> <span class="function-name">same-length</span>
+    <span class="doc">&quot;Return [-1 0 1] to express whether the former word is longer, of
+  equal length or shorter than the latter word.&quot;</span>
+    <span class="rainbow-delimiters-depth-3-face">[</span>letters<span class="rainbow-delimiters-depth-3-face">]</span>
+    #<span class="rainbow-delimiters-depth-3-face">(</span>vals-comparator <span class="rainbow-delimiters-depth-4-face">(</span>count <span class="variable-name">%</span><span class="rainbow-delimiters-depth-4-face">)</span>
+                      <span class="rainbow-delimiters-depth-4-face">(</span>count letters<span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= -1 <span class="rainbow-delimiters-depth-4-face">(</span>is <span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span>same-length <span class="string">&quot;azerty&quot;</span><span class="rainbow-delimiters-depth-6-face">)</span> <span class="string">&quot;azert&quot;</span><span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 0 <span class="rainbow-delimiters-depth-4-face">(</span>is <span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span>same-length <span class="string">&quot;azerty&quot;</span><span class="rainbow-delimiters-depth-6-face">)</span> <span class="string">&quot;azerty&quot;</span><span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 1 <span class="rainbow-delimiters-depth-4-face">(</span>is <span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span>same-length <span class="string">&quot;azerty&quot;</span><span class="rainbow-delimiters-depth-6-face">)</span> <span class="string">&quot;azertyu&quot;</span><span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span>with-test
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="keyword">defn</span> <span class="function-name">rarest-letter</span>
+    <span class="doc">&quot;Return [-1 0 1] to express whether the former letter is after,
+  equal or before the letter one.&quot;</span>
+    <span class="rainbow-delimiters-depth-3-face">[</span><span class="rainbow-delimiters-depth-3-face">]</span>
+    #<span class="rainbow-delimiters-depth-3-face">(</span>vals-comparator <span class="rainbow-delimiters-depth-4-face">(</span>get letter-frequency <span class="variable-name">%1</span> 0<span class="rainbow-delimiters-depth-4-face">)</span>
+                      <span class="rainbow-delimiters-depth-4-face">(</span>get letter-frequency <span class="variable-name">%2</span> 0<span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= -1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>rarest-letter<span class="rainbow-delimiters-depth-5-face">)</span> <span class="clojure-character-face">\z</span> <span class="clojure-character-face">\t</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>rarest-letter<span class="rainbow-delimiters-depth-5-face">)</span> <span class="clojure-character-face">\t</span> <span class="clojure-character-face">\z</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 0 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>rarest-letter<span class="rainbow-delimiters-depth-5-face">)</span> <span class="clojure-character-face">\a</span> <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span>with-test
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="keyword">defn</span> <span class="function-name">letter-at-position-in-word</span>
+    <span class="doc">&quot;Return [-1 0 1] to express whether the word given as parameter
+  contains a letter at a position. The letter and the position are built
+  in the projector.&quot;</span>
+    <span class="rainbow-delimiters-depth-3-face">[</span>letter position<span class="rainbow-delimiters-depth-3-face">]</span>
+    <span class="rainbow-delimiters-depth-3-face">(</span>partial word-sort letter position<span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 0 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>letter-at-position-in-word <span class="clojure-character-face">\a</span> 0<span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;azerty&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= -1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>letter-at-position-in-word <span class="clojure-character-face">\b</span> 0<span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;azerty&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>letter-at-position-in-word <span class="clojure-character-face">\c</span> 1<span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;azerty&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="rainbow-delimiters-depth-1-face">(</span>with-test
+  <span class="rainbow-delimiters-depth-2-face">(</span><span class="keyword">defn</span> <span class="function-name">retro</span>
+    <span class="doc">&quot;Return [0 1] to express whether the word given as parameter contains
+  two letters is the same order. The letters and possibly other
+  parameters are built in the projector.&quot;</span>
+    <span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">[</span>previous-letter current-letter<span class="rainbow-delimiters-depth-4-face">]</span>
+     <span class="rainbow-delimiters-depth-4-face">(</span>retro previous-letter
+            current-letter
+            <span class="rainbow-delimiters-depth-5-face">(</span><span class="clojure-keyword-face">:case</span> autocomplete-default-settings<span class="rainbow-delimiters-depth-5-face">)</span>
+            <span class="rainbow-delimiters-depth-5-face">(</span><span class="clojure-keyword-face">:laxity</span> autocomplete-default-settings<span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span>
+    <span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">[</span>previous-letter current-letter case-mode laxity<span class="rainbow-delimiters-depth-4-face">]</span>
+     <span class="rainbow-delimiters-depth-4-face">(</span><span class="keyword">let</span> <span class="rainbow-delimiters-depth-5-face">[</span>match-criterion
+           <span class="rainbow-delimiters-depth-6-face">(</span><span class="keyword">case</span> laxity
+             <span class="clojure-keyword-face">:terse</span> #<span class="rainbow-delimiters-depth-7-face">(</span><span class="rainbow-delimiters-depth-8-face">(</span>case-match previous-letter
+                                  case-mode<span class="rainbow-delimiters-depth-8-face">)</span> <span class="rainbow-delimiters-depth-8-face">(</span>nth <span class="variable-name">%</span> <span class="rainbow-delimiters-depth-9-face">(</span>dec <span class="variable-name">%2</span><span class="rainbow-delimiters-depth-9-face">)</span><span class="rainbow-delimiters-depth-8-face">)</span><span class="rainbow-delimiters-depth-7-face">)</span>
+             <span class="clojure-keyword-face">:lax</span> #<span class="rainbow-delimiters-depth-7-face">(</span>contains-case-letters? <span class="rainbow-delimiters-depth-8-face">(</span>subs <span class="variable-name">%</span> 0 <span class="variable-name">%2</span><span class="rainbow-delimiters-depth-8-face">)</span>
+                                           <span class="rainbow-delimiters-depth-8-face">[</span>previous-letter<span class="rainbow-delimiters-depth-8-face">]</span>
+                                           case-mode<span class="rainbow-delimiters-depth-7-face">)</span><span class="rainbow-delimiters-depth-6-face">)</span><span class="rainbow-delimiters-depth-5-face">]</span>
+       <span class="rainbow-delimiters-depth-5-face">(</span><span class="keyword">fn</span> <span class="rainbow-delimiters-depth-6-face">[</span>word<span class="rainbow-delimiters-depth-6-face">]</span>
+         <span class="rainbow-delimiters-depth-6-face">(</span><span class="keyword">loop</span> <span class="rainbow-delimiters-depth-7-face">[</span>indices <span class="rainbow-delimiters-depth-8-face">(</span><span class="keyword">-&gt;&gt;</span> word
+                             <span class="rainbow-delimiters-depth-9-face">(</span>map-indexed vector<span class="rainbow-delimiters-depth-9-face">)</span>
+                             <span class="rainbow-delimiters-depth-9-face">(</span>filter #<span class="rainbow-delimiters-depth-1-face">(</span>= current-letter <span class="rainbow-delimiters-depth-2-face">(</span>last <span class="variable-name">%</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span><span class="rainbow-delimiters-depth-9-face">)</span>
+                             <span class="rainbow-delimiters-depth-9-face">(</span>map first<span class="rainbow-delimiters-depth-9-face">)</span><span class="rainbow-delimiters-depth-8-face">)</span><span class="rainbow-delimiters-depth-7-face">]</span>
+           <span class="rainbow-delimiters-depth-7-face">(</span><span class="keyword">cond</span> <span class="rainbow-delimiters-depth-8-face">(</span><span class="keyword">or</span> <span class="rainbow-delimiters-depth-9-face">(</span>empty? indices<span class="rainbow-delimiters-depth-9-face">)</span> <span class="rainbow-delimiters-depth-9-face">(</span>&lt;= <span class="rainbow-delimiters-depth-1-face">(</span>first indices<span class="rainbow-delimiters-depth-1-face">)</span> 0<span class="rainbow-delimiters-depth-9-face">)</span><span class="rainbow-delimiters-depth-8-face">)</span> 1
+                 <span class="rainbow-delimiters-depth-8-face">(</span>match-criterion word <span class="rainbow-delimiters-depth-9-face">(</span>first indices<span class="rainbow-delimiters-depth-9-face">)</span><span class="rainbow-delimiters-depth-8-face">)</span> 0
+                 <span class="clojure-keyword-face">:else</span> <span class="rainbow-delimiters-depth-8-face">(</span><span class="keyword">recur</span> <span class="rainbow-delimiters-depth-9-face">(</span>rest indices<span class="rainbow-delimiters-depth-9-face">)</span><span class="rainbow-delimiters-depth-8-face">)</span><span class="rainbow-delimiters-depth-7-face">)</span><span class="rainbow-delimiters-depth-6-face">)</span><span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 0 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>retro <span class="clojure-character-face">\b</span> <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;babar&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>retro <span class="clojure-character-face">\b</span> <span class="clojure-character-face">\a</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;zabz&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 0 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>retro <span class="clojure-character-face">\b</span> <span class="clojure-character-face">\a</span> <span class="clojure-keyword-face">:strict</span> <span class="clojure-keyword-face">:lax</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;bRaNCH&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span>
+  <span class="rainbow-delimiters-depth-2-face">(</span>is <span class="rainbow-delimiters-depth-3-face">(</span>= 1 <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>retro <span class="clojure-character-face">\b</span> <span class="clojure-character-face">\a</span> <span class="clojure-keyword-face">:strict</span> <span class="clojure-keyword-face">:lax</span><span class="rainbow-delimiters-depth-5-face">)</span> <span class="string">&quot;BRaNCH&quot;</span><span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+</pre>
+
+ </body>
+</html>
